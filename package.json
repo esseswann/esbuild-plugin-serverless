@@ -10,5 +10,24 @@
   },
   "main": "./lib/index.js",
   "types": "./lib/index.d.ts",
-  "files": ["lib", "README.md"]
+  "files": [
+    "lib",
+    "README.md"
+  ],
+  "prettier": {
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": false,
+    "singleQuote": true,
+    "trailingComma": "none"
+  },
+  "dependencies": {
+    "@types/invariant": "2.2.35",
+    "@types/node": "18.15.11",
+    "@yandex-cloud/nodejs-sdk": "2.4.2",
+    "dotenv": "16.0.3",
+    "esbuild": "0.17.15",
+    "invariant": "2.2.4",
+    "jszip": "3.10.1"
+  }
 }
