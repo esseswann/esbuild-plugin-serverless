@@ -11,9 +11,9 @@ Describe your Cloud Functions entrypoints and pass them to esbuild `build` funct
 ```typescript
 import {
   EntrypointConfig,
-  Entrypoints
-} from 'esbuild-plugin-serverless/entrypoint'
-import getFromEnv from 'esbuild-plugin-serverless/getFromEnv'
+  Entrypoints,
+  getFromEnv
+} from 'esbuild-plugin-serverless'
 
 const common: EntrypointConfig = {
   runtime: 'nodejs16',
