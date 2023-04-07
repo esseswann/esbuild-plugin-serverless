@@ -1,9 +1,10 @@
 # Esbuild Serverless Plugin
-This plugin allows you to imitate [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/) when working with NodeJS based Cloud Functions in Yandex Cloud
+This plugin allows you to imitate [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/) when working with NodeJS based Cloud Functions in Yandex Cloud. \
+Using [esbuild](esbuild.github.io) it rebuilds the code on save and deploys it to the cloud without eving saving compiled files to the disk
 
 ## Setup
-Install the package and ts-node
-`npm install esbuild-plugin-serverless ts-node`
+Install the neccessary packages \
+`npm install esbuild esbuild-plugin-serverless ts-node`
 
 Create a file with a name similar to `build.ts`
 
