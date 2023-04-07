@@ -12,7 +12,8 @@ Describe your Cloud Functions entrypoints and pass them to esbuild `build` funct
 import {
   EntrypointConfig,
   Entrypoints,
-  getFromEnv
+  getFromEnv,
+  esbuildServerlessPlugin
 } from 'esbuild-plugin-serverless'
 
 const common: EntrypointConfig = {
