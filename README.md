@@ -1,11 +1,13 @@
 # Esbuild Serverless Plugin
-[![Node version](https://img.shields.io/npm/v/esbuild-plugin-serverless.svg?style=flat)](https://www.npmjs.com/package/esbuild-plugin-serverless)
+[![Node version](https://img.shields.io/npm/v/esbuild-plugin-serverless.svg?style=flat)](https://www.npmjs.com/package/esbuild-plugin-serverless) \
 This plugin allows you to imitate [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/) when working with NodeJS based Cloud Functions in Yandex Cloud. \
 Using [esbuild](esbuild.github.io) it rebuilds the code on save and deploys it to the cloud without even saving compiled files to the disk
 
 ## Setup
 Install the neccessary packages \
-`npm install esbuild esbuild-plugin-serverless ts-node`
+````bash
+npm install esbuild esbuild-plugin-serverless ts-node
+````
 
 Create a file with a name similar to `build.ts`
 
@@ -86,4 +88,8 @@ YC_PRIVATE_KEY=
 ```
 This method is used for security reasons, using OAuth token is not recommended. If these variables are not provided the library will attempt to authorize from Metadata service
 
-Run `npm run dev` and enjoy automatic re-deployment on save
+Run
+```bash
+npm run dev
+```
+and enjoy automatic re-deployment on save

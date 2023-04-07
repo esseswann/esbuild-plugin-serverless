@@ -1,6 +1,6 @@
 {
   "name": "esbuild-plugin-serverless",
-  "version": "0.1.5",
+  "version": "0.1.6",
   "author": {
     "email": "esseswann@gmail.com",
     "name": "jsus"
