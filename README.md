@@ -1,5 +1,5 @@
 # Esbuild Serverless Plugin
-This plugin allows you to imitate (hot-module-replacement)[https://webpack.js.org/guides/hot-module-replacement/] when working with NodeJS based Cloud Functions in Yandex Cloud
+This plugin allows you to imitate [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/) when working with NodeJS based Cloud Functions in Yandex Cloud
 
 ## Setup
 Install the package
