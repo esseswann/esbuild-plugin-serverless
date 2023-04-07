@@ -2,8 +2,8 @@
 This plugin allows you to imitate [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/) when working with NodeJS based Cloud Functions in Yandex Cloud
 
 ## Setup
-Install the package
-`npm install esbuild-plugin-serverless`
+Install the package and ts-node
+`npm install esbuild-plugin-serverless ts-node`
 
 Create a file with a name similar to `build.ts`
 
@@ -66,3 +66,22 @@ const build = async (entrypointConfig: Entrypoints) => {
 
 export default build
 ```
+
+Bind `build` function to `dev` script by adding it into your package.json
+```json
+{
+  "scripts": {
+    "dev": "ts-node chores/index.ts"
+  }
+}
+```
+
+Add some authorization by providing the following variables from [service sccount authorized key](https://cloud.yandex.ru/docs/iam/operations/authorized-key/create):
+```
+YC_ACCESS_KEY_ID=
+YC_SERVICE_ACCOUNT_ID=
+YC_PRIVATE_KEY=
+```
+This method is used for security reasons, using OAuth token is not recommended. If these variables are not provided the library will attempt to authorize from Metadata service
+
+Run `npm run dev` and enjoy automatic re-deployment on save
