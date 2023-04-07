@@ -11,13 +11,9 @@ const CreateFunctionVersionRequest =
 const esbuildServerlessPlugin = (entrypoints: Entrypoints): Plugin => ({
   name: 'serverless',
   setup(build) {
-    const session = new Session({
-      serviceAccountJson: {
-        accessKeyId: getFromEnv('YC_ACCESS_KEY_ID'),
-        serviceAccountId: getFromEnv('YC_SERVICE_ACCOUNT_ID'),
-        privateKey: getFromEnv('YC_PRIVATE_KEY')
-      }
-    })
+    const session = new Session(
+      process.env.YC_ACCESS_KEY_ID ? getSessionConfig() : {}
+    )
     build.onEnd(async (result) => {
       if (result.outputFiles)
         for (const outputFile of result.outputFiles) {
@@ -29,6 +25,14 @@ const esbuildServerlessPlugin = (entrypoints: Entrypoints): Plugin => ({
           await uploadFunction(session, createVersionRequest, content)
         }
     })
+  }
+})
+
+const getSessionConfig = () => ({
+  serviceAccountJson: {
+    accessKeyId: getFromEnv('YC_ACCESS_KEY_ID'),
+    serviceAccountId: getFromEnv('YC_SERVICE_ACCOUNT_ID'),
+    privateKey: getFromEnv('YC_PRIVATE_KEY')
   }
 })
 
