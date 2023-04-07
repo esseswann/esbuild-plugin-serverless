@@ -76,7 +76,7 @@ Bind `build` function to `dev` script by adding it into your package.json
 }
 ```
 
-Add some authorization by providing the following variables from [service sccount authorized key](https://cloud.yandex.ru/docs/iam/operations/authorized-key/create):
+Add some authorization by providing the following variables from [service sccount authorized key](https://cloud.yandex.ru/docs/iam/operations/authorized-key/create). You can use `getFromEnv` helper.
 ```
 YC_ACCESS_KEY_ID=
 YC_SERVICE_ACCOUNT_ID=
