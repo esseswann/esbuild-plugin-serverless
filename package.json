@@ -1,0 +1,14 @@
+{
+  "name": "esbuild-plugin-serverless",
+  "version": "0.0.1",
+  "author": {
+    "email": "esseswann@gmail.com",
+    "name": "jsus"
+  },
+  "scripts": {
+    "build": "rm -rf lib && tsc"
+  },
+  "main": "./lib/index.js",
+  "types": "./lib/index.d.ts",
+  "files": ["lib", "README.md"]
+}
