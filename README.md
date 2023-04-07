@@ -1,4 +1,5 @@
 # Esbuild Serverless Plugin
+[![Node version](https://img.shields.io/npm/v/esbuild-plugin-serverless.svg?style=flat)](https://www.npmjs.com/package/esbuild-plugin-serverless)
 This plugin allows you to imitate [hot-module-replacement](https://webpack.js.org/guides/hot-module-replacement/) when working with NodeJS based Cloud Functions in Yandex Cloud. \
 Using [esbuild](esbuild.github.io) it rebuilds the code on save and deploys it to the cloud without even saving compiled files to the disk
 
