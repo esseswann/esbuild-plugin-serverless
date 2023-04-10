@@ -4,7 +4,7 @@ This plugin allows you to imitate [hot-module-replacement](https://webpack.js.or
 Using [esbuild](esbuild.github.io) it rebuilds the code on save and deploys it to the cloud without even saving compiled files to the disk
 
 ## Setup
-Install the neccessary packages \
+Install the neccessary packages
 ````bash
 npm install esbuild esbuild-plugin-serverless ts-node
 ````
