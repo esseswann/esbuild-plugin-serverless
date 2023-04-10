@@ -49,7 +49,8 @@ import { Entrypoints } from 'esbuild-plugin-serverless/entrypoint'
 const build = async (entrypointConfig: Entrypoints) => {
   process.env.NODE_ENV = 'PRODUCTION'
   const entryPoints = Object.keys(entrypointConfig).map(
-    // This should include the path to a folder where your entrypoints reside as individual files
+    // This should include the path to a folder
+    // where your entrypoints reside as individual files or folders
     (entrypoint) => `./src/${entrypoint}`
   )
   const context = await createContext({
@@ -86,7 +87,7 @@ YC_ACCESS_KEY_ID=
 YC_SERVICE_ACCOUNT_ID=
 YC_PRIVATE_KEY=
 ```
-This method is used for security reasons, using OAuth token is not recommended. If these variables are not provided the library will attempt to authorize from Metadata service
+This method is used for security reasons, as using OAuth token is not recommended. If these variables are not provided the library will attempt to authorize from Metadata service. One can also work entirely in the cloud using a VM with service-account attached to it.
 
 Run
 ```bash
