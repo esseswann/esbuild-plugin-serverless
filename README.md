@@ -53,18 +53,23 @@ const build = async (entrypointConfig: Entrypoints) => {
     // where your entrypoints reside as individual files or folders
     (entrypoint) => `./src/${entrypoint}`
   )
+
+  // Some packages can break the build process so we can move them outside
+  const external = {
+    '@yandex-cloud/nodejs-sdk': '*',
+    googleapis: '*'
+  }
   const context = await createContext({
     entryPoints,
     bundle: true,
     minify: true,
     platform: 'node',
     target: 'node16',
-    // If you are using this package it's gonna break without this line
-    external: ['@yandex-cloud/nodejs-sdk'],
+    external: Object.keys(external),
     treeShaking: true,
     outdir: 'build',
     write: false,
-    plugins: [esbuildServerlessPlugin(entrypointConfig)]
+    plugins: [esbuildServerlessPlugin(entrypointConfig, external)]
   })
   await context.watch()
 }

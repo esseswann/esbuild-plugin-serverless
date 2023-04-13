@@ -8,7 +8,10 @@ import { getFromEnv } from './getFromEnv'
 const CreateFunctionVersionRequest =
   cloudApi.serverless.functions_function_service.CreateFunctionVersionRequest
 
-export const esbuildServerlessPlugin = (entrypoints: Entrypoints): Plugin => ({
+export const esbuildServerlessPlugin = (
+  entrypoints: Entrypoints,
+  external?: Record<string, string>
+): Plugin => ({
   name: 'serverless',
   setup(build) {
     const session = new Session(
@@ -17,7 +20,7 @@ export const esbuildServerlessPlugin = (entrypoints: Entrypoints): Plugin => ({
     build.onEnd(async (result) => {
       if (result.outputFiles)
         for (const outputFile of result.outputFiles) {
-          const { content, filename } = await packPayload(outputFile)
+          const { content, filename } = await packPayload(outputFile, external)
           const entrypointConfig = entrypoints[filename.name]
           if (!entrypointConfig)
             throw new Error('There should be a config for each entrypoint')
@@ -36,7 +39,10 @@ const getSessionConfig = () => ({
   }
 })
 
-const packPayload = async (outputFile: OutputFile) => {
+const packPayload = async (
+  outputFile: OutputFile,
+  external?: Record<string, string>
+) => {
   console.log('Packing started')
   const zip = new JSZip()
   const filename = path.parse(outputFile.path.split('build')[1])
@@ -44,10 +50,8 @@ const packPayload = async (outputFile: OutputFile) => {
     `Packing ${outputFile.contents.length} bytes from ${filename.base}`
   )
   zip.file(filename.base, outputFile.contents)
-  zip.file(
-    'package.json',
-    '{ "dependencies": { "@yandex-cloud/nodejs-sdk": "2.3.2" }}'
-  )
+  if (external)
+    zip.file('package.json', `{ "dependencies": ${JSON.stringify(external)}}`)
   const content = await zip.generateAsync({ type: 'nodebuffer' })
   return {
     content,
