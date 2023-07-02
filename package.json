@@ -27,10 +27,10 @@
     "trailingComma": "none"
   },
   "dependencies": {
-    "@types/node": "18.15.11",
-    "@yandex-cloud/nodejs-sdk": "2.4.2",
-    "dotenv": "16.0.3",
-    "esbuild": "0.17.15",
+    "@types/node": "20.3.3",
+    "@yandex-cloud/nodejs-sdk": "2.4.4",
+    "dotenv": "16.3.1",
+    "esbuild": "0.18.11",
     "jszip": "3.10.1"
   }
 }
