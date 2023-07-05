@@ -1,4 +1,5 @@
 import { Session, cloudApi, serviceClients } from '@yandex-cloud/nodejs-sdk'
+import { ServiceAccountCredentialsConfig } from '@yandex-cloud/nodejs-sdk/dist/types'
 import { OutputFile, Plugin } from 'esbuild'
 import JSZip from 'jszip'
 import path from 'path'
@@ -31,7 +32,7 @@ export const esbuildServerlessPlugin = (
   }
 })
 
-const getSessionConfig = () => ({
+const getSessionConfig = (): ServiceAccountCredentialsConfig => ({
   serviceAccountJson: {
     accessKeyId: getFromEnv('YC_ACCESS_KEY_ID'),
     serviceAccountId: getFromEnv('YC_SERVICE_ACCOUNT_ID'),
@@ -53,6 +54,9 @@ const packPayload = async (
   if (external)
     zip.file('package.json', `{ "dependencies": ${JSON.stringify(external)}}`)
   const content = await zip.generateAsync({ type: 'nodebuffer' })
+  console.log(
+    `Generated ${content.length} bytes zip archive for ${filename.base}`
+  )
   return {
     content,
     filename
