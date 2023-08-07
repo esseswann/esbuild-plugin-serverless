@@ -18,9 +18,13 @@ export const esbuildServerlessPlugin = (
     const session = new Session(
       process.env.YC_ACCESS_KEY_ID ? getSessionConfig() : {}
     )
+    const cache = new Map()
     build.onEnd(async (result) => {
       if (result.outputFiles)
         for (const outputFile of result.outputFiles) {
+          if (cache.get(outputFile.path) === outputFile.hash)
+            continue
+          cache.set(outputFile.path, outputFile.hash)
           const { content, filename } = await packPayload(outputFile, external)
           const entrypointConfig = entrypoints[filename.name]
           if (!entrypointConfig)
