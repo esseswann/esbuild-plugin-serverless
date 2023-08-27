@@ -27,7 +27,7 @@
     "trailingComma": "none"
   },
   "peerDependencies": {
-    "esbuild": "^0.19.2",
+    "esbuild": "^0.19.2"
   },
   "dependencies": {
     "@types/node": "20.4.8",
