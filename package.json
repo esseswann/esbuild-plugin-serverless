@@ -1,6 +1,6 @@
 {
   "name": "esbuild-plugin-serverless",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "license": "ISC",
   "repository": {
     "type": "git",
@@ -26,11 +26,13 @@
     "singleQuote": true,
     "trailingComma": "none"
   },
+  "peerDependencies": {
+    "esbuild": "^0.19.2",
+  },
   "dependencies": {
     "@types/node": "20.4.8",
     "@yandex-cloud/nodejs-sdk": "2.4.8",
     "dotenv": "16.3.1",
-    "esbuild": "^0.18.19",
     "jszip": "3.10.1"
   }
 }
